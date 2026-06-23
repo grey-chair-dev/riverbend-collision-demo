@@ -69,7 +69,7 @@ const Quote: React.FC = () => {
 
   if (submitted) {
     return (
-      <div className="min-h-screen pt-28 md:pt-40 pb-28 md:pb-24 px-4 sm:px-6 bg-slate-50 flex items-center justify-center">
+      <div className="min-h-screen site-header-offset pb-28 md:pb-24 px-4 sm:px-6 bg-slate-50 flex items-center justify-center">
         <div className="max-w-xl w-full bg-white p-8 sm:p-12 md:p-16 rounded-sm shadow-2xl text-center border-t-8 border-red-600">
           <div className="w-24 h-24 bg-red-600 rounded-full flex items-center justify-center mx-auto mb-10 shadow-xl metallic-shine">
             <CheckCircle className="w-12 h-12 text-white" />
@@ -90,7 +90,7 @@ const Quote: React.FC = () => {
   }
 
   return (
-    <div className="min-h-screen pt-28 md:pt-40 pb-28 md:pb-24 px-4 sm:px-6 bg-slate-50">
+    <div className="min-h-screen site-header-offset pb-28 md:pb-24 px-4 sm:px-6 bg-slate-50">
       <div className="max-w-5xl mx-auto">
         <div className="flex items-end justify-between mb-8 md:mb-12 gap-4">
           <div className="flex items-center space-x-4 md:space-x-6 min-w-0">

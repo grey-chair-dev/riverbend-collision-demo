@@ -24,7 +24,7 @@ const Contact: React.FC = () => {
   return (
     <div className="flex flex-col">
       {/* Hero Section */}
-      <section className="relative pt-28 md:pt-48 pb-24 bg-slate-950 overflow-hidden">
+      <section className="relative site-header-offset pb-24 bg-slate-950 overflow-hidden">
         <div className="absolute inset-0 opacity-20 pointer-events-none">
           <img 
             src="https://images.unsplash.com/photo-1517524206127-48bbd363f3d7?auto=format&fit=crop&q=80&w=1920" 

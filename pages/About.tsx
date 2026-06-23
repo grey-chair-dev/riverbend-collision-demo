@@ -98,7 +98,7 @@ const About: React.FC = () => {
   return (
     <div className="flex flex-col">
       {/* Hero Section */}
-      <section className="relative pt-28 md:pt-48 pb-24 bg-slate-950 overflow-hidden">
+      <section className="relative site-header-offset pb-24 bg-slate-950 overflow-hidden">
         <div className="absolute inset-0 z-0 opacity-30">
           <img 
             src="https://images.unsplash.com/photo-1590402444811-bfee29d1df90?auto=format&fit=crop&q=80&w=1920" 

@@ -23,7 +23,7 @@ const Home: React.FC = () => {
   return (
     <div className="flex flex-col">
       {/* Hero Section */}
-      <section className="relative min-h-[auto] md:min-h-screen flex items-center pt-20 md:pt-24 overflow-hidden bg-slate-950">
+      <section className="relative flex items-center site-header-offset overflow-hidden bg-slate-950 pb-10 md:pb-16 lg:min-h-screen">
         <div className="absolute inset-0 z-0">
           <img 
             src="https://images.unsplash.com/photo-1590402444811-bfee29d1df90?auto=format&fit=crop&q=80&w=1920" 
@@ -34,7 +34,7 @@ const Home: React.FC = () => {
           <div className="absolute inset-0 bg-gradient-to-t from-slate-950 via-slate-950/20 to-slate-950/70"></div>
         </div>
 
-        <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 w-full py-10 md:py-16 lg:py-20">
+        <div className="relative z-10 page-container w-full py-8 md:py-12 lg:py-20">
           <div className="grid lg:grid-cols-12 gap-8 lg:gap-14 items-center">
             <div className="lg:col-span-7">
               <div className="inline-flex items-center space-x-3 bg-red-600/20 border border-red-500/40 px-4 py-2 rounded-full mb-6 backdrop-blur-sm">
@@ -54,7 +54,7 @@ const Home: React.FC = () => {
                 </span>
               </p>
               
-              <h1 className="text-[2.5rem] leading-[0.95] sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl font-black font-heading text-white uppercase tracking-tighter italic mb-5 md:mb-6 drop-shadow-[0_4px_24px_rgba(0,0,0,0.5)]">
+              <h1 className="text-4xl leading-[0.95] sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl font-black font-heading text-white uppercase tracking-tighter italic mb-5 md:mb-6 drop-shadow-[0_4px_24px_rgba(0,0,0,0.5)]">
                 PRECISION <br />
                 <span className="text-red-500">COLLISION</span> <br />
                 RESTORATION
@@ -78,11 +78,11 @@ const Home: React.FC = () => {
               </div>
               
               <div className="flex flex-col gap-3 sm:flex-row sm:gap-4 mb-8 md:mb-10">
-                <Link to="/quote" className="touch-target w-full sm:w-auto bg-red-600 hover:bg-red-500 text-white px-8 sm:px-10 py-4 sm:py-5 rounded-sm font-black uppercase text-xs tracking-[0.15em] sm:tracking-[0.2em] sm:transform sm:-skew-x-12 transition-all flex items-center justify-center space-x-3 metallic-shine shadow-[0_8px_30px_rgba(220,38,38,0.35)]">
+                <Link to="/quote" className="touch-target mobile-no-skew w-full sm:w-auto bg-red-600 hover:bg-red-500 text-white px-8 sm:px-10 py-4 sm:py-5 rounded-sm font-black uppercase text-xs tracking-[0.15em] sm:tracking-[0.2em] sm:-skew-x-12 transition-all flex items-center justify-center space-x-3 metallic-shine shadow-[0_8px_30px_rgba(220,38,38,0.35)]">
                   <span>Request A Quote</span>
                   <ChevronRight className="w-4 h-4" />
                 </Link>
-                <a href={phoneHref} className="touch-target w-full sm:w-auto bg-white hover:bg-slate-100 text-slate-900 px-8 sm:px-10 py-4 sm:py-5 rounded-sm font-black uppercase text-xs tracking-[0.15em] sm:tracking-[0.2em] sm:transform sm:-skew-x-12 transition-all flex items-center justify-center space-x-3 shadow-2xl">
+                <a href={phoneHref} className="touch-target mobile-no-skew w-full sm:w-auto bg-white hover:bg-slate-100 text-slate-900 px-8 sm:px-10 py-4 sm:py-5 rounded-sm font-black uppercase text-xs tracking-[0.15em] sm:tracking-[0.2em] sm:-skew-x-12 transition-all flex items-center justify-center space-x-3 shadow-2xl">
                   <Phone className="w-4 h-4" />
                   <span className="truncate">Call {brand.phone.display}</span>
                 </a>
@@ -129,7 +129,7 @@ const Home: React.FC = () => {
                   </ol>
                   <Link
                     to="/quote"
-                    className="block w-full text-center bg-white text-slate-950 py-4 font-black uppercase text-[11px] tracking-[0.2em] transform -skew-x-12 hover:bg-red-600 hover:text-white transition-all"
+                    className="touch-target mobile-no-skew block w-full text-center bg-white text-slate-950 py-4 font-black uppercase text-[11px] tracking-[0.2em] sm:-skew-x-12 hover:bg-red-600 hover:text-white transition-all"
                   >
                     Start in 60 seconds
                   </Link>

@@ -1,11 +1,63 @@
-/* Mobile-first base styles */
+@import "tailwindcss";
+
+@theme {
+  --font-sans: 'Inter', ui-sans-serif, system-ui, sans-serif;
+  --font-heading: 'Exo 2', ui-sans-serif, system-ui, sans-serif;
+}
+
 html {
   -webkit-text-size-adjust: 100%;
   scroll-behavior: smooth;
 }
 
 body {
+  font-family: var(--font-sans);
+  overflow-x: hidden;
+  background-color: #f8fafc;
   padding-bottom: env(safe-area-inset-bottom, 0);
+}
+
+h1,
+h2,
+h3,
+h4,
+.font-heading {
+  font-family: var(--font-heading);
+}
+
+.text-stroke-red {
+  -webkit-text-stroke: 1px #dc2626;
+}
+
+.diagonal-section {
+  clip-path: polygon(0 5%, 100% 0%, 100% 95%, 0% 100%);
+}
+
+.glass-card {
+  background: rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.metallic-shine {
+  position: relative;
+  overflow: hidden;
+}
+
+.metallic-shine::after {
+  content: '';
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: linear-gradient(45deg, transparent, rgba(255, 255, 255, 0.1), transparent);
+  transform: rotate(45deg);
+  transition: 0.5s;
+}
+
+.metallic-shine:hover::after {
+  left: 100%;
 }
 
 /* Prevent iOS zoom on form focus */
@@ -23,21 +75,58 @@ textarea {
   }
 }
 
-/* Touch-friendly tap targets */
 .touch-target {
   min-height: 44px;
   min-width: 44px;
 }
 
-/* Main content clearance for mobile sticky bar */
 @media (max-width: 1023px) {
   .mobile-main-pad {
-    padding-bottom: 5.5rem;
+    padding-bottom: calc(5.75rem + env(safe-area-inset-bottom, 0px));
+  }
+
+  .mobile-no-skew {
+    transform: none !important;
   }
 }
 
-/* Safe horizontal padding on small screens */
-.safe-x {
-  padding-left: max(1rem, env(safe-area-inset-left));
-  padding-right: max(1rem, env(safe-area-inset-right));
+:root {
+  --site-header-height: 4.25rem;
+}
+
+@media (min-width: 768px) {
+  :root {
+    --site-header-height: 4.75rem;
+  }
+}
+
+.site-header-offset {
+  padding-top: calc(var(--site-header-height) + env(safe-area-inset-top, 0px));
+}
+
+/* Mobile drawer — must work even if JS hydration is slow */
+.mobile-drawer {
+  transform: translateX(100%);
+  visibility: hidden;
+  pointer-events: none;
+}
+
+.mobile-drawer.is-open {
+  transform: translateX(0);
+  visibility: visible;
+  pointer-events: auto;
+}
+
+.page-container {
+  width: 100%;
+  max-width: 80rem;
+  margin-inline: auto;
+  padding-inline: max(1rem, env(safe-area-inset-left, 1rem));
+  padding-right: max(1rem, env(safe-area-inset-right, 1rem));
+}
+
+@media (min-width: 640px) {
+  .page-container {
+    padding-inline: 1.5rem;
+  }
 }

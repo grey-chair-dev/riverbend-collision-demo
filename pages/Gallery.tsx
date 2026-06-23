@@ -118,7 +118,7 @@ const Gallery: React.FC = () => {
   return (
     <div className="flex flex-col">
       {/* Cinematic Hero */}
-      <section className="relative pt-28 md:pt-48 pb-24 bg-slate-950 overflow-hidden">
+      <section className="relative site-header-offset pb-24 bg-slate-950 overflow-hidden">
         <div className="absolute inset-0 opacity-10 pointer-events-none">
           <div className="absolute top-0 right-0 w-1/2 h-full bg-red-600 transform skew-x-12 translate-x-1/2"></div>
         </div>

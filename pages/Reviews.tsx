@@ -99,7 +99,7 @@ const Reviews: React.FC = () => {
   return (
     <div className="flex flex-col">
       {/* Hero Section */}
-      <section className="relative pt-28 md:pt-48 pb-24 bg-slate-950 overflow-hidden text-center">
+      <section className="relative site-header-offset pb-24 bg-slate-950 overflow-hidden text-center">
         <div className="absolute inset-0 opacity-10 grayscale pointer-events-none">
           <img src="https://images.unsplash.com/photo-1541899481282-d53bffe3c35d?auto=format&fit=crop&q=80&w=1920" alt="background" className="w-full h-full object-cover" />
         </div>

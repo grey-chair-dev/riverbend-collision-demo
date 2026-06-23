@@ -23,7 +23,7 @@ const App: React.FC = () => {
   }, [location.pathname]);
 
   return (
-    <div className="flex flex-col min-h-screen selection:bg-red-600 selection:text-white">
+    <div className="flex flex-col min-h-screen overflow-x-hidden selection:bg-red-600 selection:text-white">
       <Navbar />
       <main className="flex-grow mobile-main-pad">
         <Routes>
