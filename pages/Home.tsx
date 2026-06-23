@@ -6,6 +6,7 @@ import {
   ChevronRight, Gauge, Wrench, Shield, Car, CheckCircle2,
   Sparkles
 } from 'lucide-react';
+import { brand, phoneHref } from '../lib/brand';
 
 const topPartners = [
   { name: "Allstate", domain: "allstate.com" },
@@ -36,7 +37,7 @@ const Home: React.FC = () => {
           <div className="max-w-3xl">
             <div className="inline-flex items-center space-x-3 bg-red-600/10 border border-red-600/30 px-4 py-1.5 rounded-full mb-8">
               <span className="w-2 h-2 bg-red-600 rounded-full animate-pulse"></span>
-              <span className="text-red-500 text-[10px] font-black uppercase tracking-[0.3em]">Columbus Collision Specialist</span>
+              <span className="text-red-500 text-[10px] font-black uppercase tracking-[0.3em]">{brand.regionShort} Collision Specialist</span>
             </div>
             
             <h1 className="text-6xl md:text-8xl font-black font-heading leading-[0.9] text-white uppercase tracking-tighter italic mb-8">
@@ -46,7 +47,7 @@ const Home: React.FC = () => {
             </h1>
             
             <p className="text-xl text-slate-300 mb-12 leading-relaxed max-w-xl font-medium">
-              Trusted by Columbus drivers for over 25 years. We provide factory-standard repairs, invisible paint matching, and handle all insurance paperwork.
+              Trusted by {brand.region} drivers for over {brand.yearsInBusiness} years. We provide factory-standard repairs, invisible paint matching, and handle all insurance paperwork.
             </p>
             
             <div className="flex flex-col sm:flex-row gap-5">
@@ -54,9 +55,9 @@ const Home: React.FC = () => {
                 <span>Request A Quote</span>
                 <ChevronRight className="w-4 h-4" />
               </Link>
-              <a href="tel:6145550123" className="bg-white hover:bg-slate-100 text-slate-900 px-10 py-5 rounded-sm font-black uppercase text-xs tracking-[0.2em] transform -skew-x-12 transition-all flex items-center justify-center space-x-3 shadow-2xl">
+              <a href={phoneHref} className="bg-white hover:bg-slate-100 text-slate-900 px-10 py-5 rounded-sm font-black uppercase text-xs tracking-[0.2em] transform -skew-x-12 transition-all flex items-center justify-center space-x-3 shadow-2xl">
                 <Phone className="w-4 h-4" />
-                <span>Call (614) 555-0123</span>
+                <span>Call {brand.phone.display}</span>
               </a>
             </div>
 
@@ -112,7 +113,7 @@ const Home: React.FC = () => {
             { label: "Lifetime Warranty", sub: "On all Body/Paint work" },
             { label: "All Insurance", sub: "We handle the paperwork" },
             { label: "OEM Parts", sub: "Factory standard quality" },
-            { label: "Columbus Native", sub: "Trusted local experts" }
+            { label: `${brand.regionShort} Native`, sub: "Trusted local experts" }
           ].map((item, i) => (
             <div key={i} className="flex flex-col items-center md:items-start border-l-2 border-red-600 pl-6">
               <span className="text-slate-950 font-black uppercase text-sm tracking-tight">{item.label}</span>
@@ -155,7 +156,7 @@ const Home: React.FC = () => {
               <span className="text-red-600 font-black uppercase text-xs tracking-[0.4em] mb-4 block italic">Expert Services</span>
               <h2 className="text-4xl md:text-5xl font-black text-slate-900 uppercase font-heading italic leading-[0.9]">
                 Specialized in <br />
-                <span className="text-red-600 underline decoration-4 underline-offset-8 decoration-red-600/20">Columbus Auto Body</span>
+                <span className="text-red-600 underline decoration-4 underline-offset-8 decoration-red-600/20">{brand.regionShort} Auto Body</span>
               </h2>
             </div>
             <Link to="/services" className="text-slate-900 font-black uppercase text-[11px] tracking-widest flex items-center group">
@@ -224,7 +225,7 @@ const Home: React.FC = () => {
                 </div>
                 <div className="flex items-center space-x-4">
                   <CheckCircle2 className="text-red-600 w-5 h-5" />
-                  <span className="text-white font-black uppercase text-xs tracking-widest">OH Right-to-Choose Support</span>
+                  <span className="text-white font-black uppercase text-xs tracking-widest">KY Right-to-Choose Support</span>
                 </div>
                 <div className="flex items-center space-x-4">
                   <CheckCircle2 className="text-red-600 w-5 h-5" />
@@ -249,9 +250,9 @@ const Home: React.FC = () => {
           <div className="flex justify-center space-x-1 text-red-600 mb-8">
             <Star className="fill-current w-6 h-6" /><Star className="fill-current w-6 h-6" /><Star className="fill-current w-6 h-6" /><Star className="fill-current w-6 h-6" /><Star className="fill-current w-6 h-6" />
           </div>
-          <h2 className="text-3xl font-black uppercase italic text-slate-950 mb-10 tracking-tight">"Elite Body Works handled my insurance claim seamlessly. My car looks showroom new again. The paint match is absolutely invisible. Truly the best in Columbus."</h2>
+          <h2 className="text-3xl font-black uppercase italic text-slate-950 mb-10 tracking-tight">"{brand.nameShort} handled my insurance claim seamlessly. My car looks showroom new again. The paint match is absolutely invisible. Truly the best in {brand.regionShort}."</h2>
           <div className="flex flex-col items-center">
-             <span className="font-black uppercase text-sm tracking-widest text-slate-900">David M. — New Albany, OH</span>
+             <span className="font-black uppercase text-sm tracking-widest text-slate-900">David M. — Fort Thomas, KY</span>
              <span className="text-[10px] font-bold text-slate-400 uppercase tracking-widest mt-1">Verified Google Review</span>
           </div>
         </div>
@@ -267,7 +268,7 @@ const Home: React.FC = () => {
           </div>
           <div className="flex flex-wrap justify-center gap-4">
             <Link to="/quote" className="bg-slate-950 text-white px-10 py-5 font-black uppercase text-xs tracking-widest transform -skew-x-12 hover:bg-white hover:text-slate-950 transition-all shadow-2xl">Request Quote</Link>
-            <a href="tel:6145550123" className="bg-white text-slate-950 px-10 py-5 font-black uppercase text-xs tracking-widest transform -skew-x-12 hover:bg-slate-950 hover:text-white transition-all shadow-2xl">Call Now</a>
+            <a href={phoneHref} className="bg-white text-slate-950 px-10 py-5 font-black uppercase text-xs tracking-widest transform -skew-x-12 hover:bg-slate-950 hover:text-white transition-all shadow-2xl">Call Now</a>
           </div>
         </div>
       </section>

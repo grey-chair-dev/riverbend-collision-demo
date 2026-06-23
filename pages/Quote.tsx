@@ -1,9 +1,10 @@
 
-import React, { useState } from 'react';
+import React, { useState, useRef } from 'react';
 import { 
   Camera, Send, CheckCircle, Info, Loader2, 
   X, ChevronLeft, ChevronRight, Phone 
 } from 'lucide-react';
+import { brand, phoneHref } from '../lib/brand';
 
 const Quote: React.FC = () => {
   const [step, setStep] = useState(1);
@@ -20,6 +21,25 @@ const Quote: React.FC = () => {
   });
   
   const [photos, setPhotos] = useState<File[]>([]);
+  const formRef = useRef<HTMLFormElement>(null);
+
+  const advanceToStep = (nextStep: 2 | 3) => {
+    const form = formRef.current;
+    if (!form) return;
+
+    if (nextStep === 2) {
+      for (const name of ['name', 'phone', 'email'] as const) {
+        const field = form.elements.namedItem(name);
+        if (field instanceof HTMLInputElement && !field.reportValidity()) return;
+      }
+      setStep(2);
+      return;
+    }
+
+    const description = form.elements.namedItem('description');
+    if (description instanceof HTMLTextAreaElement && !description.reportValidity()) return;
+    setStep(3);
+  };
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
     const { name, value } = e.target;
@@ -62,7 +82,7 @@ const Quote: React.FC = () => {
             onClick={() => window.location.href = '#/'}
             className="w-full bg-slate-950 text-white py-5 font-black uppercase tracking-widest text-xs transition-all hover:bg-red-600"
           >
-            Return to Command Center
+            Return Home
           </button>
         </div>
       </div>
@@ -94,7 +114,7 @@ const Quote: React.FC = () => {
                 ></div>
               </div>
 
-              <form onSubmit={handleSubmit} className="p-10 md:p-16">
+              <form ref={formRef} onSubmit={handleSubmit} className="p-10 md:p-16">
                 {step === 1 && (
                   <div className="animate-in fade-in slide-in-from-right duration-500">
                     <h3 className="text-2xl font-black text-slate-950 uppercase italic font-heading mb-10 border-b border-slate-100 pb-4">Personal Logistics</h3>
@@ -105,7 +125,7 @@ const Quote: React.FC = () => {
                       </div>
                       <div className="space-y-2">
                         <label className="text-[10px] font-black uppercase text-slate-400 tracking-widest">Phone Number</label>
-                        <input required name="phone" value={formData.phone} onChange={handleInputChange} type="tel" className="w-full bg-slate-50 border-b-2 border-slate-200 px-0 py-3 text-slate-950 font-bold focus:outline-none focus:border-red-600 transition-colors" placeholder="(614) --- ----" />
+                        <input required name="phone" value={formData.phone} onChange={handleInputChange} type="tel" className="w-full bg-slate-50 border-b-2 border-slate-200 px-0 py-3 text-slate-950 font-bold focus:outline-none focus:border-red-600 transition-colors" placeholder="(859) --- ----" />
                       </div>
                       <div className="space-y-2">
                         <label className="text-[10px] font-black uppercase text-slate-400 tracking-widest">Email Address</label>
@@ -121,7 +141,7 @@ const Quote: React.FC = () => {
                       </div>
                     </div>
                     <div className="mt-16 flex justify-end">
-                      <button type="button" onClick={() => setStep(2)} className="bg-slate-950 hover:bg-red-600 text-white px-12 py-5 font-black uppercase tracking-widest text-[11px] transition-all flex items-center transform -skew-x-12">
+                      <button type="button" onClick={() => advanceToStep(2)} className="bg-slate-950 hover:bg-red-600 text-white px-12 py-5 font-black uppercase tracking-widest text-[11px] transition-all flex items-center transform -skew-x-12">
                         Continue to Damage Info <ChevronRight className="w-4 h-4 ml-2" />
                       </button>
                     </div>
@@ -134,7 +154,7 @@ const Quote: React.FC = () => {
                     
                     <div className="space-y-3">
                       <label className="text-[10px] font-black uppercase text-slate-400 tracking-widest">Detail the Damage</label>
-                      <textarea name="description" value={formData.description} onChange={handleInputChange} className="w-full bg-slate-50 border border-slate-200 p-6 text-slate-950 font-medium focus:outline-none focus:border-red-600 transition-colors min-h-[180px]" placeholder="Explain where the impact occurred and any mechanical changes you've noticed..."></textarea>
+                      <textarea required name="description" value={formData.description} onChange={handleInputChange} className="w-full bg-slate-50 border border-slate-200 p-6 text-slate-950 font-medium focus:outline-none focus:border-red-600 transition-colors min-h-[180px]" placeholder="Explain where the impact occurred and any mechanical changes you've noticed..."></textarea>
                     </div>
 
                     <div className="space-y-3">
@@ -146,7 +166,7 @@ const Quote: React.FC = () => {
                       <button type="button" onClick={() => setStep(1)} className="text-slate-400 hover:text-red-600 font-black uppercase text-[11px] tracking-[0.2em] flex items-center italic">
                         <ChevronLeft className="w-4 h-4 mr-2" /> Previous Step
                       </button>
-                      <button type="button" onClick={() => setStep(3)} className="bg-slate-950 hover:bg-red-600 text-white px-12 py-5 font-black uppercase tracking-widest text-[11px] transition-all flex items-center transform -skew-x-12">
+                      <button type="button" onClick={() => advanceToStep(3)} className="bg-slate-950 hover:bg-red-600 text-white px-12 py-5 font-black uppercase tracking-widest text-[11px] transition-all flex items-center transform -skew-x-12">
                         Proceed to Evidence <ChevronRight className="w-4 h-4 ml-2" />
                       </button>
                     </div>
@@ -203,7 +223,7 @@ const Quote: React.FC = () => {
 
           <div className="space-y-8">
             <div className="bg-slate-950 text-white p-12 rounded-sm shadow-2xl relative overflow-hidden border-t-8 border-red-600">
-               <h4 className="text-2xl font-black uppercase italic mb-8 font-heading">The Elite Advantage</h4>
+               <h4 className="text-2xl font-black uppercase italic mb-8 font-heading">The Riverbend Advantage</h4>
                <ul className="space-y-8">
                  {[
                    { t: "Head Estimator Review", d: "Every digital request is manually verified by our shop owner." },
@@ -224,9 +244,9 @@ const Quote: React.FC = () => {
             <div className="bg-white border border-slate-200 p-12 rounded-sm shadow-xl text-center">
                <h4 className="text-slate-950 font-black uppercase italic mb-4 font-heading">Direct Line</h4>
                <p className="text-slate-400 text-[10px] font-black uppercase mb-8 tracking-widest">Speak with a human specialist</p>
-               <a href="tel:6145550123" className="flex items-center justify-center space-x-4 text-red-600 font-black text-2xl hover:text-slate-950 transition-all transform hover:scale-105">
+               <a href={phoneHref} className="flex items-center justify-center space-x-4 text-red-600 font-black text-2xl hover:text-slate-950 transition-all transform hover:scale-105">
                   <Phone className="w-6 h-6" />
-                  <span>(614) 555-0123</span>
+                  <span>{brand.phone.display}</span>
                </a>
             </div>
           </div>

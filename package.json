@@ -1,7 +1,8 @@
 {
-  "name": "elite-body-works-columbus",
+  "name": "riverbend-collision-demo",
   "private": true,
-  "version": "0.0.0",
+  "version": "1.0.0",
+  "description": "Riverbend Collision Works — Grey Chair portfolio demo for a fictional Northern Kentucky auto body shop.",
   "type": "module",
   "scripts": {
     "dev": "vite",

@@ -2,6 +2,7 @@
 import React, { useState, useEffect } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { Phone, Menu, X, Car, Clock, ShieldCheck, MapPin } from 'lucide-react';
+import { brand, phoneHref } from '../lib/brand';
 
 const Navbar: React.FC = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -40,7 +41,7 @@ const Navbar: React.FC = () => {
           </div>
           <div className="flex items-center space-x-4">
             <MapPin className="w-3 h-3 text-red-600" />
-            <span>123 Performance Dr, Columbus, OH</span>
+            <span>{brand.address.short}</span>
           </div>
         </div>
       </div>
@@ -53,8 +54,8 @@ const Navbar: React.FC = () => {
               <Car className="w-6 h-6 text-white" />
             </div>
             <div className="ml-4 flex flex-col">
-              <span className="text-2xl font-black uppercase tracking-tighter leading-none text-slate-900 italic">Elite<span className="text-red-600">BodyWorks</span></span>
-              <span className="text-[9px] uppercase tracking-[0.4em] font-black text-slate-400 -mt-0.5">Premium Collision Center</span>
+              <span className="text-2xl font-black uppercase tracking-tighter leading-none text-slate-900 italic">{brand.nameDisplay.primary}<span className="text-red-600">{brand.nameDisplay.accent}</span></span>
+              <span className="text-[9px] uppercase tracking-[0.4em] font-black text-slate-400 -mt-0.5">{brand.tagline}</span>
             </div>
           </Link>
 
@@ -76,7 +77,7 @@ const Navbar: React.FC = () => {
             <div className="flex items-center pl-8 border-l border-slate-200 space-x-6">
               <div className="flex flex-col text-right">
                 <span className="text-[10px] font-black uppercase text-slate-400">Emergency Support:</span>
-                <a href="tel:6145550123" className="text-sm font-black text-slate-900 hover:text-red-600 transition-colors">(614) 555-0123</a>
+                <a href={phoneHref} className="text-sm font-black text-slate-900 hover:text-red-600 transition-colors">{brand.phone.display}</a>
               </div>
               <Link to="/quote" className="bg-slate-950 text-white px-6 py-3 rounded-sm font-black text-[11px] uppercase tracking-[0.2em] transform -skew-x-12 hover:bg-red-600 transition-all shadow-xl metallic-shine">
                 Free Estimate
@@ -94,7 +95,7 @@ const Navbar: React.FC = () => {
       <div className={`lg:hidden fixed inset-0 bg-slate-950 text-white z-50 transition-all duration-500 transform ${isOpen ? 'translate-x-0' : 'translate-x-full'}`}>
         <div className="p-6 h-full flex flex-col">
           <div className="flex justify-between items-center mb-12">
-            <span className="text-2xl font-black uppercase italic">Elite<span className="text-red-600">BW</span></span>
+            <span className="text-2xl font-black uppercase italic">{brand.nameDisplay.primary}<span className="text-red-600">{brand.nameMobile}</span></span>
             <button onClick={() => setIsOpen(false)} className="p-2 border border-white/10 rounded-full"><X className="w-6 h-6" /></button>
           </div>
           <div className="flex flex-col space-y-8">
@@ -110,7 +111,7 @@ const Navbar: React.FC = () => {
             ))}
           </div>
           <div className="mt-auto space-y-6">
-            <a href="tel:6145550123" className="block text-center bg-white text-slate-900 py-4 font-black uppercase tracking-widest text-sm">Call Now: (614) 555-0123</a>
+            <a href={phoneHref} className="block text-center bg-white text-slate-900 py-4 font-black uppercase tracking-widest text-sm">Call Now: {brand.phone.display}</a>
             <Link to="/quote" onClick={() => setIsOpen(false)} className="block text-center bg-red-600 text-white py-4 font-black uppercase tracking-widest text-sm">Start Digital Estimate</Link>
           </div>
         </div>

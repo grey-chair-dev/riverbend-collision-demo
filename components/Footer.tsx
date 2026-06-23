@@ -1,7 +1,8 @@
 
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { Phone, Mail, MapPin, Clock, Facebook, Instagram, Twitter, Linkedin, ChevronRight, Car } from 'lucide-react';
+import { Phone, Clock, Facebook, Instagram, Twitter, Linkedin, ChevronRight, Car } from 'lucide-react';
+import { brand, copyrightLine, phoneHref } from '../lib/brand';
 
 const Footer: React.FC = () => {
   return (
@@ -13,10 +14,10 @@ const Footer: React.FC = () => {
               <div className="bg-red-600 p-1.5 rounded transform rotate-3">
                 <Car className="w-5 h-5 text-white" />
               </div>
-              <span className="text-xl font-black uppercase tracking-tighter italic font-heading">Elite Body Works</span>
+              <span className="text-xl font-black uppercase tracking-tighter italic font-heading">{brand.nameShort}</span>
             </div>
             <p className="text-slate-400 text-sm leading-loose mb-10">
-              Elite Body Works is the premier auto body repair shop in Columbus, OH. We specialize in restoring damaged vehicles to their pre-accident condition with factory precision.
+              {brand.name} is a fictional collision center serving {brand.region}. This portfolio demo showcases conversion-focused design for local auto body shops.
             </p>
             <div className="flex space-x-4">
               <a href="#" className="p-3 bg-white/5 hover:bg-red-600 rounded text-slate-400 hover:text-white transition-all"><Facebook className="w-4 h-4" /></a>
@@ -46,7 +47,7 @@ const Footer: React.FC = () => {
             <h4 className="text-lg font-black uppercase font-heading mb-10 italic border-b border-red-600 w-max pb-2">Site Map</h4>
             <ul className="space-y-4">
               {[
-                { n: "Home", p: "/" }, { n: "About Us", p: "/about" }, { n: "Our Work", p: "/gallery" }, { n: "Contact Us", p: "/contact" }, { n: "Online Estimates", p: "/quote" }, { n: "Terms & Conditions", p: "/" }, { n: "Privacy Policy", p: "/" }
+                { n: "Home", p: "/" }, { n: "About Us", p: "/about" }, { n: "Our Work", p: "/gallery" }, { n: "Contact Us", p: "/contact" }, { n: "Online Estimates", p: "/quote" }, { n: "Terms & Conditions", p: "/terms" }, { n: "Privacy Policy", p: "/privacy" }
               ].map(item => (
                 <li key={item.n} className="flex items-center group">
                   <div className="bg-red-600/20 group-hover:bg-red-600 p-1 rounded-sm mr-3 transition-colors">
@@ -65,7 +66,7 @@ const Footer: React.FC = () => {
                   <div className="p-3 bg-red-600/10 rounded-full h-max"><Phone className="w-5 h-5 text-red-600" /></div>
                   <div>
                     <div className="text-[10px] font-black uppercase text-slate-500 mb-1">For Repair Support</div>
-                    <a href="tel:6145550123" className="text-lg font-black hover:text-red-600 transition-colors">(614) 555-0123</a>
+                    <a href={phoneHref} className="text-lg font-black hover:text-red-600 transition-colors">{brand.phone.display}</a>
                   </div>
                </div>
                <div className="flex space-x-4">
@@ -84,11 +85,19 @@ const Footer: React.FC = () => {
         </div>
         
         <div className="pt-12 border-t border-white/5 flex flex-col md:flex-row justify-between items-center gap-6">
-          <p className="text-slate-500 text-[10px] font-bold uppercase tracking-[0.2em]">
-            Copyright © 2025 Elite Body Works & Collision Repair Services. All Rights Reserved.
+          <p className="text-slate-500 text-[10px] font-bold uppercase tracking-[0.2em] text-center md:text-left">
+            {copyrightLine()}
           </p>
           <div className="text-slate-500 text-[10px] font-bold uppercase tracking-[0.2em]">
-            Designed & Developed by <span className="text-white">Elite Automotive Media</span>
+            Built by{' '}
+            <a
+              href={brand.agencyUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-white hover:text-red-500 transition-colors"
+            >
+              {brand.agency}
+            </a>
           </div>
         </div>
       </div>

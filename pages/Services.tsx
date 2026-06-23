@@ -6,6 +6,7 @@ import {
   ChevronRight, Phone, Clock, ShieldAlert, CheckCircle2,
   ArrowRight, Truck
 } from 'lucide-react';
+import { brand, phoneHref } from '../lib/brand';
 
 const services = [
   {
@@ -37,7 +38,7 @@ const services = [
     title: 'Exotic & Classic Restoration',
     description: 'For the enthusiast who demands perfection. Complete ground-up restorations for classic, muscle, and luxury exotic vehicles.',
     icon: Wrench,
-    image: 'https://images.unsplash.com/photo-1487754180451-c456f719c141?auto=format&fit=crop&q=80&w=800',
+    image: 'https://images.unsplash.com/photo-1555215695-3004980ad54e?auto=format&fit=crop&q=80&w=800',
     details: ['Custom Fabrication', 'Show-Quality Paint', 'Period-Correct Sourcing', 'Engine Bay Detail']
   },
   {
@@ -51,7 +52,7 @@ const services = [
   {
     id: 'fleet',
     title: 'Fleet Management Solutions',
-    description: 'Specialized priority service for Columbus area fleets. We minimize downtime with rapid-turnaround collision and cosmetic maintenance.',
+    description: `Specialized priority service for ${brand.region} fleets. We minimize downtime with rapid-turnaround collision and cosmetic maintenance.`,
     icon: Truck,
     image: 'https://images.unsplash.com/photo-1601584115197-04ecc0da31d7?auto=format&fit=crop&q=80&w=800',
     details: ['Priority Scheduling', 'Consolidated Billing', 'Rapid Repair Cycles', 'Bulk Maintenance Discounts']
@@ -73,14 +74,14 @@ const Services: React.FC = () => {
         <div className="relative z-10 max-w-7xl mx-auto px-6 text-center md:text-left">
           <div className="flex flex-col md:flex-row items-center md:items-start space-y-4 md:space-y-0 md:space-x-4 mb-8">
             <div className="w-12 h-1.5 bg-red-600"></div>
-            <span className="text-red-500 font-black uppercase tracking-[0.4em] text-xs italic">Columbus Collision Specialists</span>
+            <span className="text-red-500 font-black uppercase tracking-[0.4em] text-xs italic">{brand.regionShort} Collision Specialists</span>
           </div>
           <h1 className="text-5xl md:text-7xl font-black text-white uppercase italic font-heading leading-none mb-8">
-            ELITE REPAIR <br />
+            FACTORY REPAIR <br />
             <span className="text-transparent text-stroke-red">SOLUTIONS</span>
           </h1>
           <p className="text-xl text-slate-400 max-w-2xl leading-relaxed font-medium mx-auto md:mx-0">
-            Factory-certified body work and precision paint for Columbus drivers. We handle the paperwork, so you can focus on the road.
+            Factory-certified body work and precision paint for {brand.region} drivers. We handle the paperwork, so you can focus on the road.
           </p>
         </div>
       </section>
@@ -130,13 +131,13 @@ const Services: React.FC = () => {
               WHEN WILL MY <br className="md:hidden" /> CAR BE <span className="text-red-600">READY?</span>
             </h2>
             <p className="text-slate-400 text-sm font-bold uppercase tracking-widest max-w-xl mx-auto">
-              Elite Body Works follows a rigorous 9-step restoration cycle to ensure factory safety standards are met on every job.
+              {brand.name} follows a rigorous 9-step restoration cycle to ensure factory safety standards are met on every job.
             </p>
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
             {[
-              { n: '01', t: 'Estimate Preparation', d: 'Elite Body Works (For Insurance) or Insurance Completes (For Shop). Vehicle owner signs "repair order" at shop.' },
+              { n: '01', t: 'Estimate Preparation', d: `${brand.nameShort} (For Insurance) or Insurance Completes (For Shop). Vehicle owner signs "repair order" at shop.` },
               { n: '02', t: 'Insurance Negotiations', d: 'Insurance "negotiations" completed to ensure factory-standard repair coverage.' },
               { n: '03', t: 'Scheduling', d: 'Car scheduled for repairs. Estimated completion date given to the vehicle owner.' },
               { n: '04', t: 'Parts Logistics', d: 'Parts ordered and received. We verify all components against OEM specifications.' },
@@ -170,7 +171,7 @@ const Services: React.FC = () => {
               <ShieldAlert className="w-12 h-12 text-red-600 mb-8" />
               <h3 className="text-3xl font-black text-slate-950 uppercase italic font-heading mb-6">Know Your Rights</h3>
               <p className="text-slate-600 text-sm leading-loose mb-8 font-medium">
-                In the state of Ohio, you have the legal right to choose where your vehicle is repaired. Insurance companies may try to "steer" you elsewhere. At Elite Body Works, we advocate for you, ensuring your car is fixed right.
+                In the state of Kentucky, you have the legal right to choose where your vehicle is repaired. Insurance companies may try to "steer" you elsewhere. At {brand.nameShort}, we advocate for you, ensuring your car is fixed right.
               </p>
               <ul className="space-y-4">
                 {[
@@ -196,7 +197,7 @@ const Services: React.FC = () => {
                 <Link to="/quote" className="bg-red-600 text-white px-10 py-5 font-black uppercase text-[10px] tracking-widest transform -skew-x-12 shadow-xl hover:bg-slate-950 transition-all text-center">
                   Request Quote
                 </Link>
-                <a href="tel:6145550123" className="border-2 border-slate-950 text-slate-950 px-10 py-5 font-black uppercase text-[10px] tracking-widest transform -skew-x-12 hover:bg-slate-950 hover:text-white transition-all text-center">
+                <a href={phoneHref} className="border-2 border-slate-950 text-slate-950 px-10 py-5 font-black uppercase text-[10px] tracking-widest transform -skew-x-12 hover:bg-slate-950 hover:text-white transition-all text-center">
                   Call Shop
                 </a>
               </div>
@@ -217,8 +218,8 @@ const Services: React.FC = () => {
                <p className="text-slate-500 font-bold uppercase text-[10px] tracking-widest">Available Mon-Sat 8AM - 6PM</p>
              </div>
           </div>
-          <a href="tel:6145550123" className="text-4xl md:text-5xl font-black text-red-600 italic font-heading hover:text-white transition-colors">
-            (614) 555-0123
+          <a href={phoneHref} className="text-4xl md:text-5xl font-black text-red-600 italic font-heading hover:text-white transition-colors">
+            {brand.phone.display}
           </a>
         </div>
       </section>

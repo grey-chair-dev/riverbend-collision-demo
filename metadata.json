@@ -1,6 +1,6 @@
 {
-  "name": "Elite Body Works Columbus",
-  "description": "Premium auto body, collision repair, and custom paint specialist in Columbus. Conversion-focused site featuring AI-powered quote assistance and seamless photo uploads.",
+  "name": "Riverbend Collision Works",
+  "description": "Demo portfolio site for a fictional Northern Kentucky collision center. Features AI-powered quote assistance and seamless photo uploads.",
   "requestFramePermissions": [
     "camera"
   ]

@@ -7,6 +7,7 @@ import {
   ThumbsUp, ExternalLink, ShieldCheck, ChevronRight,
   Award, Zap, Car, ArrowRight
 } from 'lucide-react';
+import { brand, phoneHref } from '../lib/brand';
 
 interface Testimonial {
   id: string;
@@ -23,17 +24,17 @@ const reviews: Testimonial[] = [
   {
     id: '1',
     author: 'Sarah Jenkins',
-    location: 'Upper Arlington, OH',
+    location: 'Fort Thomas, KY',
     rating: 5,
     date: '2 days ago',
     service: 'Collision Repair',
-    text: "After my accident, I was overwhelmed. Elite Body Works handled the entire insurance claim for my Tesla. The panel alignment is perfect and the sensors work flawlessly. Truly the best in Columbus.",
+    text: `After my accident, I was overwhelmed. ${brand.nameShort} handled the entire insurance claim for my Tesla. The panel alignment is perfect and the sensors work flawlessly. Truly the best in ${brand.regionShort}.`,
     verified: true
   },
   {
     id: '2',
     author: 'Michael Rossi',
-    location: 'Dublin, OH',
+    location: 'Florence, KY',
     rating: 5,
     date: '1 week ago',
     service: 'Custom Paint',
@@ -43,7 +44,7 @@ const reviews: Testimonial[] = [
   {
     id: '3',
     author: 'James T. Wilson',
-    location: 'New Albany, OH',
+    location: 'Newport, KY',
     rating: 5,
     date: '3 weeks ago',
     service: 'Dent Repair',
@@ -53,7 +54,7 @@ const reviews: Testimonial[] = [
   {
     id: '4',
     author: 'Elena Rodriguez',
-    location: 'Westerville, OH',
+    location: 'Edgewood, KY',
     rating: 5,
     date: '1 month ago',
     service: 'Insurance Claim',
@@ -63,17 +64,17 @@ const reviews: Testimonial[] = [
   {
     id: '5',
     author: 'Robert Chen',
-    location: 'Columbus, OH',
+    location: 'Covington, KY',
     rating: 5,
     date: '2 months ago',
     service: 'Frame Alignment',
-    text: "Structural damage is scary, but Elite has the tech to fix it right. My truck tracks perfectly straight now. No rattles, no leaks. I wouldn't go anywhere else.",
+    text: `Structural damage is scary, but ${brand.nameShort} has the tech to fix it right. My truck tracks perfectly straight now. No rattles, no leaks. I wouldn't go anywhere else.`,
     verified: true
   },
   {
     id: '6',
     author: 'Amanda G.',
-    location: 'Grandview Heights, OH',
+    location: 'Bellevue, KY',
     rating: 5,
     date: '3 months ago',
     service: 'Bumper Replacement',
@@ -266,7 +267,7 @@ const Reviews: React.FC = () => {
                  <ThumbsUp className="w-8 h-8 text-red-600" />
                  <h3 className="text-3xl font-black uppercase italic font-heading">Submit Your Story</h3>
                </div>
-               <p className="text-slate-600 mb-10 leading-relaxed font-medium italic">"The process was flawless from start to finish. I'll never go anywhere else in Columbus."</p>
+               <p className="text-slate-600 mb-10 leading-relaxed font-medium italic">"The process was flawless from start to finish. I'll never go anywhere else in {brand.regionShort}."</p>
                <div className="space-y-6">
                  <button className="w-full bg-slate-950 text-white py-5 font-black uppercase tracking-widest text-xs flex items-center justify-center space-x-3 transform -skew-x-12 hover:bg-red-600 transition-all shadow-xl">
                    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/c/c1/Google_%22G%22_logo.svg/1200px-Google_%22G%22_logo.svg.png" className="w-4 h-4" alt="Google" />
@@ -288,9 +289,9 @@ const Reviews: React.FC = () => {
           <h2 className="text-3xl font-black uppercase italic text-slate-950 mb-8 tracking-tight">Don't settle for "good enough" when it comes to your vehicle's safety.</h2>
           <div className="flex flex-col items-center">
              <StarRating rating={5} size={24} />
-             <span className="text-[11px] font-black uppercase text-red-600 tracking-[0.4em] mt-6">Columbus's Highest Rated</span>
+             <span className="text-[11px] font-black uppercase text-red-600 tracking-[0.4em] mt-6">{brand.regionShort}'s Highest Rated</span>
              <Link to="/quote" className="mt-12 group inline-flex items-center text-2xl font-black uppercase italic font-heading text-slate-950 hover:text-red-600 transition-colors">
-               Get Your Free Elite Quote <ChevronRight className="ml-2 w-8 h-8 group-hover:translate-x-4 transition-transform text-red-600" />
+               Get Your Free Quote <ChevronRight className="ml-2 w-8 h-8 group-hover:translate-x-4 transition-transform text-red-600" />
              </Link>
           </div>
         </div>

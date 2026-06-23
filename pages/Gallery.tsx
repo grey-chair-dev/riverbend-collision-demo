@@ -5,6 +5,7 @@ import {
   Camera, ChevronRight, ArrowRight, ShieldCheck, 
   Maximize2, Filter, Zap, Wrench, Sparkles 
 } from 'lucide-react';
+import { phoneHref } from '../lib/brand';
 
 interface Project {
   id: string;
@@ -91,7 +92,7 @@ const BeforeAfterCard: React.FC<{ project: Project }> = ({ project }) => {
         <div className="flex items-center space-x-2 mb-3">
           <span className="text-red-600 font-black uppercase text-[9px] tracking-widest">{project.category}</span>
           <span className="w-1 h-1 bg-slate-300 rounded-full"></span>
-          <span className="text-slate-400 font-bold uppercase text-[9px] tracking-widest italic">Elite Certified</span>
+          <span className="text-slate-400 font-bold uppercase text-[9px] tracking-widest italic">I-CAR Certified</span>
         </div>
         <h3 className="text-lg font-black text-slate-950 uppercase italic font-heading mb-2 leading-tight group-hover:text-red-600 transition-colors">
           {project.title}
@@ -217,7 +218,7 @@ const Gallery: React.FC = () => {
               <span>Start My Quote</span>
               <ChevronRight className="w-4 h-4 ml-2" />
             </Link>
-            <a href="tel:6145550123" className="border-2 border-slate-950 text-slate-950 px-12 py-5 font-black uppercase text-xs tracking-[0.3em] transform -skew-x-12 hover:bg-slate-950 hover:text-white transition-all flex items-center justify-center">
+            <a href={phoneHref} className="border-2 border-slate-950 text-slate-950 px-12 py-5 font-black uppercase text-xs tracking-[0.3em] transform -skew-x-12 hover:bg-slate-950 hover:text-white transition-all flex items-center justify-center">
               Call Specialist
             </a>
           </div>

@@ -10,6 +10,8 @@ import Gallery from './pages/Gallery';
 import About from './pages/About';
 import Reviews from './pages/Reviews';
 import Contact from './pages/Contact';
+import NotFound from './pages/NotFound';
+import Legal from './pages/Legal';
 
 const App: React.FC = () => {
   const location = useLocation();
@@ -31,6 +33,9 @@ const App: React.FC = () => {
           <Route path="/reviews" element={<Reviews />} />
           <Route path="/contact" element={<Contact />} />
           <Route path="/quote" element={<Quote />} />
+          <Route path="/terms" element={<Legal />} />
+          <Route path="/privacy" element={<Legal />} />
+          <Route path="*" element={<NotFound />} />
         </Routes>
       </main>
       <Footer />

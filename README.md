@@ -1,111 +1,97 @@
-# Elite Body Works Columbus
+# Riverbend Collision Works
 
-Premium auto body, collision repair, and custom paint specialist website for Columbus, Ohio. Features AI-powered quote assistance and seamless photo uploads.
+**Grey Chair Digital portfolio demo** — a fictional Northern Kentucky collision center with conversion-focused pages, digital quote flow, and AI-assisted estimates.
+
+> Demo site — not a real business.
+
+## Live concept
+
+- **Brand:** Riverbend Collision Works  
+- **Location:** Covington, KY (Northern Kentucky / NKY)  
+- **Built by:** [Grey Chair Digital](https://greychair.digital)
 
 ## Features
 
-- 🚗 Premium collision repair and auto body services
-- 🎨 Custom paint and restoration services
-- 📸 Photo upload for quote requests
-- 🤖 AI-powered quote assistance using Google Gemini
-- 📱 Responsive design with modern UI
-- ⚡ Built with React, TypeScript, and Vite
+- Premium collision repair marketing pages
+- Multi-step quote form with photo upload
+- AI-powered damage guidance (Google Gemini)
+- Responsive Tailwind UI
+- Legal pages, 404 handling, and demo disclaimers
 
-## Tech Stack
+## Tech stack
 
-- **React 19** - UI framework
-- **TypeScript** - Type safety
-- **Vite** - Build tool and dev server
-- **Tailwind CSS** - Styling
-- **React Router** - Navigation
-- **Google Gemini AI** - Quote assistance
-- **Lucide React** - Icons
+- React 19 + TypeScript
+- Vite
+- React Router (hash routes)
+- Tailwind CSS (CDN)
+- Lucide React icons
 
-## Getting Started
+## Getting started
 
 ### Prerequisites
 
-- Node.js (v18 or higher recommended)
-- npm or yarn
-- Google Gemini API key
+- Node.js 18+
+- Google Gemini API key (optional, for AI quote features)
 
-### Installation
+### Install
 
-1. Clone the repository:
-   ```bash
-   git clone https://github.com/grey-chair-dev/elite-body.git
-   cd elite-body
-   ```
-
-2. Install dependencies:
-   ```bash
-   npm install
-   ```
-
-3. Create a `.env.local` file in the root directory:
-   ```bash
-   GEMINI_API_KEY=your_gemini_api_key_here
-   ```
-
-4. Run the development server:
-   ```bash
-   npm run dev
-   ```
-
-5. Open your browser and navigate to `http://localhost:3000`
-
-## Available Scripts
-
-- `npm run dev` - Start the development server
-- `npm run build` - Build for production
-- `npm run preview` - Preview the production build locally
-
-## Project Structure
-
-```
-elite-body/
-├── components/       # Reusable React components
-│   ├── Footer.tsx
-│   └── Navbar.tsx
-├── pages/           # Page components
-│   ├── About.tsx
-│   ├── Contact.tsx
-│   ├── Gallery.tsx
-│   ├── Home.tsx
-│   ├── Quote.tsx
-│   ├── Reviews.tsx
-│   └── Services.tsx
-├── services/        # API and service integrations
-│   └── geminiService.ts
-├── App.tsx          # Main app component
-├── index.tsx        # Entry point
-└── vite.config.ts   # Vite configuration
+```bash
+git clone https://github.com/grey-chair-dev/riverbend-collision-demo.git
+cd riverbend-collision-demo
+npm install
 ```
 
-## Environment Variables
+Create `.env.local`:
 
-- `GEMINI_API_KEY` - Required. Your Google Gemini API key for AI-powered quote assistance.
+```bash
+GEMINI_API_KEY=your_gemini_api_key_here
+```
+
+Run locally:
+
+```bash
+npm run dev
+```
+
+Open [http://localhost:3000](http://localhost:3000)
+
+## Scripts
+
+| Command | Description |
+|---------|-------------|
+| `npm run dev` | Development server |
+| `npm run build` | Production build → `dist/` |
+| `npm run preview` | Preview production build |
+
+## Project structure
+
+```
+riverbend-collision-demo/
+├── components/       # Navbar, Footer
+├── lib/brand.ts      # Single source of truth for demo branding
+├── pages/            # Route pages (Home, Services, Quote, Legal, …)
+├── services/         # Gemini integration
+└── App.tsx           # Routes
+```
+
+## Branding
+
+All business name, address, phone, and demo copy live in `lib/brand.ts`. Update that file to retheme the demo.
 
 ## Deployment
 
-The project can be deployed to any static hosting service that supports Vite/React applications:
+Static hosting (Vercel, Netlify, Cloudflare Pages, GitHub Pages):
 
-- Vercel
-- Netlify
-- GitHub Pages
-- AWS S3 + CloudFront
-
-Build the project first:
 ```bash
 npm run build
 ```
 
-The output will be in the `dist` directory.
+Deploy the `dist` folder.
 
 ## License
 
-Private - All rights reserved
+Private — Grey Chair Digital. All rights reserved.
 
 ## Contact
 
-For questions or support, please contact Elite Body Works Columbus.
+Questions about this demo: [greychair.digital](https://greychair.digital)

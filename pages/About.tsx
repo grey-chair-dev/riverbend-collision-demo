@@ -6,6 +6,7 @@ import {
   MapPin, Clock, CheckCircle2, ChevronRight, 
   ArrowRight, Shield
 } from 'lucide-react';
+import { brand, phoneHref } from '../lib/brand';
 
 const insurancePartners = [
   { name: "Allstate", domain: "allstate.com" },
@@ -84,7 +85,7 @@ const LogoWall = ({ title, subTitle, logos, dark = false }: { title: string, sub
                </div>
             </div>
             <span className={`text-[8px] font-black uppercase tracking-[0.3em] opacity-0 group-hover:opacity-100 transition-opacity duration-500 ${dark ? 'text-red-500' : 'text-red-600'}`}>
-              Elite Partner
+              Riverbend Partner
             </span>
           </div>
         ))}
@@ -101,7 +102,7 @@ const About: React.FC = () => {
         <div className="absolute inset-0 z-0 opacity-30">
           <img 
             src="https://images.unsplash.com/photo-1590402444811-bfee29d1df90?auto=format&fit=crop&q=80&w=1920" 
-            alt="Elite Shop Floor" 
+            alt="Riverbend shop floor" 
             className="w-full h-full object-cover"
           />
           <div className="absolute inset-0 bg-gradient-to-b from-slate-950/80 to-slate-950"></div>
@@ -110,14 +111,14 @@ const About: React.FC = () => {
         <div className="relative z-10 max-w-7xl mx-auto px-6">
           <div className="flex items-center space-x-4 mb-8">
             <div className="w-12 h-1.5 bg-red-600"></div>
-            <span className="text-red-500 font-black uppercase tracking-[0.4em] text-xs italic">The Elite Standard</span>
+            <span className="text-red-500 font-black uppercase tracking-[0.4em] text-xs italic">The Riverbend Standard</span>
           </div>
           <h1 className="text-5xl md:text-8xl font-black text-white uppercase italic font-heading leading-none mb-8">
             OUR <br />
             <span className="text-transparent text-stroke-red">HERITAGE</span>
           </h1>
           <p className="text-xl text-slate-400 max-w-2xl leading-relaxed font-medium">
-            Defining automotive excellence in Columbus for over 25 years. We don't just fix cars—we restore the standard of safety and performance.
+            Defining automotive excellence in {brand.region} for over {brand.yearsInBusiness} years. We don't just fix cars—we restore the standard of safety and performance.
           </p>
         </div>
       </section>
@@ -148,7 +149,7 @@ const About: React.FC = () => {
                 Proven by <span className="text-red-600">Precision</span>
               </h2>
               <p className="text-slate-600 text-lg leading-loose font-medium">
-                Founded in 1999, Elite Body Works began with a single mission: to provide the Columbus community with a collision center that refuses to compromise on quality. What started as a small restoration shop has evolved into a state-of-the-art facility equipped with aerospace-grade technology.
+                Founded in {brand.founded}, {brand.name} began with a single mission: to provide the {brand.city} community with a collision center that refuses to compromise on quality. What started as a small restoration shop has evolved into a state-of-the-art facility equipped with aerospace-grade technology.
               </p>
               <p className="text-slate-500 text-sm leading-relaxed">
                 We believe that a repair shouldn't just look good—it must be structurally identical to its factory state. This commitment to "invisible repairs" has made us the trusted advocate for thousands of vehicle owners navigating the complexities of insurance claims.
@@ -160,7 +161,7 @@ const About: React.FC = () => {
                     <History className="w-5 h-5" />
                     <span className="font-black uppercase text-xs tracking-widest text-slate-900 italic">25+ Years</span>
                   </div>
-                  <p className="text-slate-500 text-xs">Serving the Greater Columbus area with integrity.</p>
+                  <p className="text-slate-500 text-xs">Serving {brand.region} with integrity.</p>
                 </div>
                 <div className="space-y-2">
                   <div className="flex items-center space-x-2 text-red-600">
@@ -187,7 +188,7 @@ const About: React.FC = () => {
       <section className="py-24 bg-slate-50">
         <div className="max-w-7xl mx-auto px-6">
           <div className="text-center mb-20">
-            <h2 className="text-4xl font-black text-slate-950 uppercase italic font-heading mb-4">The Elite Pillars</h2>
+            <h2 className="text-4xl font-black text-slate-950 uppercase italic font-heading mb-4">The Riverbend Pillars</h2>
             <div className="w-24 h-1.5 bg-red-600 mx-auto"></div>
           </div>
 
@@ -258,13 +259,13 @@ const About: React.FC = () => {
             </div>
             
             <div className="bg-slate-950 p-12 text-white rounded-sm shadow-2xl relative">
-              <h3 className="text-2xl font-black uppercase italic font-heading mb-10 border-b border-white/10 pb-4">Columbus HQ</h3>
+              <h3 className="text-2xl font-black uppercase italic font-heading mb-10 border-b border-white/10 pb-4">{brand.regionShort} HQ</h3>
               <div className="space-y-10">
                 <div className="flex items-start space-x-6">
                   <MapPin className="w-6 h-6 text-red-600 flex-shrink-0 mt-1" />
                   <div>
                     <span className="text-[10px] font-black uppercase text-slate-500 tracking-widest block mb-2">Facility Address</span>
-                    <p className="text-lg font-bold">123 Performance Drive<br />Columbus, OH 43215</p>
+                    <p className="text-lg font-bold">{brand.address.line1}<br />{brand.address.line2}</p>
                   </div>
                 </div>
                 <div className="flex items-start space-x-6">
@@ -287,14 +288,14 @@ const About: React.FC = () => {
       <section className="py-24 bg-red-600 relative overflow-hidden">
         <div className="max-w-4xl mx-auto px-6 text-center relative z-10">
           <h2 className="text-4xl md:text-5xl font-black text-white uppercase italic font-heading mb-8 leading-tight">
-            Trust Columbus's <br /> Precision Specialists
+            Trust {brand.region}'s <br /> Precision Specialists
           </h2>
           <div className="flex flex-col sm:flex-row justify-center gap-6">
             <Link to="/quote" className="bg-slate-950 text-white px-12 py-5 font-black uppercase text-xs tracking-[0.3em] transform -skew-x-12 shadow-2xl hover:bg-white hover:text-slate-950 transition-all flex items-center justify-center">
               <span>Start Free Estimate</span>
               <ChevronRight className="w-4 h-4 ml-2" />
             </Link>
-            <a href="tel:6145550123" className="bg-white text-slate-950 px-12 py-5 font-black uppercase text-xs tracking-[0.3em] transform -skew-x-12 hover:bg-slate-950 hover:text-white transition-all flex items-center justify-center">
+            <a href={phoneHref} className="bg-white text-slate-950 px-12 py-5 font-black uppercase text-xs tracking-[0.3em] transform -skew-x-12 hover:bg-slate-950 hover:text-white transition-all flex items-center justify-center">
               Call The Shop
             </a>
           </div>

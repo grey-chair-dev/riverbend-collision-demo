@@ -1,10 +1,12 @@
 
 import React, { useState } from 'react';
+import { Link } from 'react-router-dom';
 import { 
   Phone, Mail, MapPin, Clock, MessageSquare, 
   Send, ChevronRight, Globe, ShieldCheck, 
   ExternalLink, Smartphone, CheckCircle2, Loader2
 } from 'lucide-react';
+import { brand, phoneHref, smsHref } from '../lib/brand';
 
 const Contact: React.FC = () => {
   const [loading, setLoading] = useState(false);
@@ -52,24 +54,24 @@ const Contact: React.FC = () => {
             {[
               {
                 title: "Emergency Dispatch",
-                val: "(614) 555-0123",
+                val: brand.phone.display,
                 sub: "Immediate Voice Support",
                 icon: Phone,
-                link: "tel:6145550123",
+                link: phoneHref,
                 color: "bg-red-600"
               },
               {
                 title: "SMS Channel",
-                val: "Text: (614) 555-0124",
+                val: `Text: ${brand.phone.smsDisplay}`,
                 sub: "Photo & Status Updates",
                 icon: Smartphone,
-                link: "sms:6145550124",
+                link: smsHref,
                 color: "bg-slate-900"
               },
               {
                 title: "Physical Facility",
-                val: "123 Performance Dr.",
-                sub: "Columbus, OH 43215",
+                val: brand.address.line1,
+                sub: brand.address.line2,
                 icon: MapPin,
                 link: "https://goo.gl/maps",
                 color: "bg-slate-800"
@@ -202,9 +204,9 @@ const Contact: React.FC = () => {
                 </div>
                 <h4 className="text-xl font-black uppercase italic font-heading mb-4 leading-tight">Need a Digital <br /> Quote instead?</h4>
                 <p className="text-white/80 text-xs font-medium mb-6">Skip the visit. Send us photos for a professional analysis within 4 hours.</p>
-                <button className="bg-slate-950 text-white px-8 py-3 font-black uppercase text-[10px] tracking-widest transform -skew-x-12 hover:bg-white hover:text-slate-950 transition-all">
+                <Link to="/quote" className="inline-block bg-slate-950 text-white px-8 py-3 font-black uppercase text-[10px] tracking-widest transform -skew-x-12 hover:bg-white hover:text-slate-950 transition-all">
                   Access Digital Portal
-                </button>
+                </Link>
               </div>
             </div>
           </div>
@@ -223,7 +225,7 @@ const Contact: React.FC = () => {
           <div className="bg-white p-12 rounded-sm shadow-2xl text-center max-w-sm transform -rotate-2">
             <MapPin className="w-12 h-12 text-red-600 mx-auto mb-6" />
             <h3 className="text-2xl font-black text-slate-950 uppercase italic font-heading mb-2">The Facility</h3>
-            <p className="text-slate-500 text-sm font-medium mb-8">123 Performance Drive, Columbus, OH 43215</p>
+            <p className="text-slate-500 text-sm font-medium mb-8">{brand.address.full}</p>
             <a 
               href="https://goo.gl/maps" 
               target="_blank" 

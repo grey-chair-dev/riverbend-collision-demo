@@ -1,12 +1,13 @@
 
 import { GoogleGenAI } from "@google/genai";
+import { brand } from "../lib/brand";
 
 // Always use the API key from process.env.API_KEY.
 const ai = new GoogleGenAI({ apiKey: process.env.API_KEY });
 
 /**
  * geminiService provides AI-powered collision assessment and expert advice
- * for Elite Body Works customers.
+ * for demo site visitors.
  */
 export const geminiService = {
   /**
@@ -21,7 +22,7 @@ export const geminiService = {
         Provide a professional estimate of repair complexity and advice for the vehicle owner. 
         Focus on safety and factory-standard repairs.`,
         config: {
-          systemInstruction: "You are an expert collision repair consultant for Elite Body Works, a high-end auto body shop in Columbus, OH. You prioritize OEM standards and customer safety.",
+          systemInstruction: `You are an expert collision repair consultant for ${brand.name}, a fictional high-end auto body shop in ${brand.city}, ${brand.state}. You prioritize OEM standards and customer safety. This is a demo site — remind users this is not a real business when appropriate.`,
           temperature: 0.7,
         },
       });
@@ -30,7 +31,7 @@ export const geminiService = {
       return response.text;
     } catch (error) {
       console.error("AI Analysis failed:", error);
-      return "Unable to generate AI assessment at this time. Please contact our estimators directly at (614) 555-0123.";
+      return `Unable to generate AI assessment at this time. Please contact our estimators directly at ${brand.phone.display}.`;
     }
   },
 
@@ -44,7 +45,7 @@ export const geminiService = {
         model: "gemini-3-pro-preview",
         contents: query,
         config: {
-          systemInstruction: "You are a master technician and claims advocate. Explain the customer's rights under Ohio law (right to choose repair shop) and why factory-certified parts matter.",
+          systemInstruction: "You are a master technician and claims advocate. Explain the customer's rights under Kentucky law (right to choose repair shop) and why factory-certified parts matter.",
           thinkingConfig: { thinkingBudget: 4000 }
         }
       });
