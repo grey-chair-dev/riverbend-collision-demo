@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 import { 
   Phone, ArrowRight, ShieldCheck, Zap, Award, Star, 
   ChevronRight, Gauge, Wrench, Shield, Car, CheckCircle2,
-  Sparkles
+  Sparkles, MapPin, Clock
 } from 'lucide-react';
 import { brand, phoneHref } from '../lib/brand';
 
@@ -28,51 +28,112 @@ const Home: React.FC = () => {
           <img 
             src="https://images.unsplash.com/photo-1590402444811-bfee29d1df90?auto=format&fit=crop&q=80&w=1920" 
             alt="Autobody Excellence" 
-            className="w-full h-full object-cover opacity-40 scale-105"
+            className="w-full h-full object-cover opacity-25 scale-105"
           />
-          <div className="absolute inset-0 bg-gradient-to-r from-slate-950 via-slate-950/70 to-transparent"></div>
+          <div className="absolute inset-0 bg-gradient-to-r from-slate-950 via-slate-950/95 to-slate-950/50"></div>
+          <div className="absolute inset-0 bg-gradient-to-t from-slate-950 via-slate-950/20 to-slate-950/70"></div>
         </div>
 
-        <div className="relative z-10 max-w-7xl mx-auto px-6 w-full py-20">
-          <div className="max-w-3xl">
-            <div className="inline-flex items-center space-x-3 bg-red-600/10 border border-red-600/30 px-4 py-1.5 rounded-full mb-8">
-              <span className="w-2 h-2 bg-red-600 rounded-full animate-pulse"></span>
-              <span className="text-red-500 text-[10px] font-black uppercase tracking-[0.3em]">{brand.regionShort} Collision Specialist</span>
-            </div>
-            
-            <h1 className="text-6xl md:text-8xl font-black font-heading leading-[0.9] text-white uppercase tracking-tighter italic mb-8">
-              PRECISION <br />
-              <span className="text-stroke-red text-transparent">COLLISION</span> <br />
-              RESTORATION
-            </h1>
-            
-            <p className="text-xl text-slate-300 mb-12 leading-relaxed max-w-xl font-medium">
-              Trusted by {brand.region} drivers for over {brand.yearsInBusiness} years. We provide factory-standard repairs, invisible paint matching, and handle all insurance paperwork.
-            </p>
-            
-            <div className="flex flex-col sm:flex-row gap-5">
-              <Link to="/quote" className="bg-red-600 hover:bg-red-700 text-white px-10 py-5 rounded-sm font-black uppercase text-xs tracking-[0.2em] transform -skew-x-12 transition-all flex items-center justify-center space-x-3 metallic-shine">
-                <span>Request A Quote</span>
-                <ChevronRight className="w-4 h-4" />
-              </Link>
-              <a href={phoneHref} className="bg-white hover:bg-slate-100 text-slate-900 px-10 py-5 rounded-sm font-black uppercase text-xs tracking-[0.2em] transform -skew-x-12 transition-all flex items-center justify-center space-x-3 shadow-2xl">
-                <Phone className="w-4 h-4" />
-                <span>Call {brand.phone.display}</span>
-              </a>
+        <div className="relative z-10 max-w-7xl mx-auto px-6 w-full py-16 md:py-20">
+          <div className="grid lg:grid-cols-12 gap-10 lg:gap-14 items-center">
+            <div className="lg:col-span-7">
+              <div className="inline-flex items-center space-x-3 bg-red-600/20 border border-red-500/40 px-4 py-2 rounded-full mb-6 backdrop-blur-sm">
+                <span className="w-2 h-2 bg-red-500 rounded-full animate-pulse"></span>
+                <span className="text-red-400 text-[10px] font-black uppercase tracking-[0.3em]">{brand.regionShort} Collision Specialist</span>
+              </div>
+
+              <p className="text-white/90 text-sm md:text-base font-bold uppercase tracking-[0.25em] mb-4 flex flex-wrap items-center gap-x-4 gap-y-2">
+                <span className="inline-flex items-center gap-2">
+                  <MapPin className="w-4 h-4 text-red-500" />
+                  {brand.city}, {brand.state}
+                </span>
+                <span className="hidden sm:inline text-white/30">|</span>
+                <span className="inline-flex items-center gap-2">
+                  <Clock className="w-4 h-4 text-red-500" />
+                  Estimates in 4 hours
+                </span>
+              </p>
+              
+              <h1 className="text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-black font-heading leading-[0.92] text-white uppercase tracking-tighter italic mb-6 drop-shadow-[0_4px_24px_rgba(0,0,0,0.5)]">
+                PRECISION <br />
+                <span className="text-red-500">COLLISION</span> <br />
+                RESTORATION
+              </h1>
+              
+              <p className="text-lg md:text-xl text-white/85 mb-8 leading-relaxed max-w-xl font-medium drop-shadow-sm">
+                Factory-standard body work and invisible paint matching for {brand.region} drivers. We handle the insurance — you get your car back right.
+              </p>
+
+              <div className="grid grid-cols-3 gap-3 mb-10 max-w-xl">
+                {[
+                  { val: `${brand.yearsInBusiness}+`, label: 'Years local' },
+                  { val: '100%', label: 'Insurers billed' },
+                  { val: '4hr', label: 'Quote turnaround' },
+                ].map((stat) => (
+                  <div key={stat.label} className="bg-white/10 border border-white/10 backdrop-blur-sm px-3 py-4 rounded-sm text-center">
+                    <div className="text-2xl md:text-3xl font-black text-white italic font-heading leading-none">{stat.val}</div>
+                    <div className="text-[9px] font-black uppercase tracking-widest text-white/60 mt-2">{stat.label}</div>
+                  </div>
+                ))}
+              </div>
+              
+              <div className="flex flex-col sm:flex-row gap-4 mb-10">
+                <Link to="/quote" className="bg-red-600 hover:bg-red-500 text-white px-10 py-5 rounded-sm font-black uppercase text-xs tracking-[0.2em] transform -skew-x-12 transition-all flex items-center justify-center space-x-3 metallic-shine shadow-[0_8px_30px_rgba(220,38,38,0.35)]">
+                  <span>Request A Quote</span>
+                  <ChevronRight className="w-4 h-4" />
+                </Link>
+                <a href={phoneHref} className="bg-white hover:bg-slate-100 text-slate-900 px-10 py-5 rounded-sm font-black uppercase text-xs tracking-[0.2em] transform -skew-x-12 transition-all flex items-center justify-center space-x-3 shadow-2xl">
+                  <Phone className="w-4 h-4" />
+                  <span>Call {brand.phone.display}</span>
+                </a>
+              </div>
+
+              <div className="flex flex-wrap gap-4 md:gap-6 p-4 md:p-5 rounded-sm bg-white/5 border border-white/10 backdrop-blur-sm">
+                {[
+                  { icon: Shield, label: 'I-CAR certified' },
+                  { icon: Award, label: 'A+ BBB rated' },
+                  { icon: Gauge, label: 'OEM Approved' },
+                ].map(({ icon: Icon, label }) => (
+                  <div key={label} className="flex items-center space-x-2.5">
+                    <Icon className="text-red-500 w-5 h-5 flex-shrink-0" />
+                    <span className="text-white font-black uppercase text-[10px] tracking-widest">{label}</span>
+                  </div>
+                ))}
+              </div>
             </div>
 
-            <div className="mt-20 flex flex-wrap gap-10 opacity-60">
-              <div className="flex items-center space-x-3 grayscale brightness-200">
-                <Shield className="text-white w-8 h-8" />
-                <span className="text-white font-black uppercase text-[10px] tracking-widest">I-CAR certified</span>
-              </div>
-              <div className="flex items-center space-x-3 grayscale brightness-200">
-                <Award className="text-white w-8 h-8" />
-                <span className="text-white font-black uppercase text-[10px] tracking-widest">A+ BBB rated</span>
-              </div>
-              <div className="flex items-center space-x-3 grayscale brightness-200">
-                <Gauge className="text-white w-8 h-8" />
-                <span className="text-white font-black uppercase text-[10px] tracking-widest">OEM Approved</span>
+            <div className="lg:col-span-5">
+              <div className="bg-white/10 backdrop-blur-md border border-white/15 rounded-sm p-8 md:p-10 shadow-2xl relative overflow-hidden">
+                <div className="absolute top-0 right-0 w-32 h-32 bg-red-600/20 rounded-full blur-3xl -translate-y-1/2 translate-x-1/2"></div>
+                <div className="relative">
+                  <span className="text-red-400 font-black uppercase text-[10px] tracking-[0.4em] italic">Free Digital Estimate</span>
+                  <h2 className="text-2xl md:text-3xl font-black text-white uppercase italic font-heading mt-3 mb-6 leading-tight">
+                    Back on the road in 3 steps
+                  </h2>
+                  <ol className="space-y-5 mb-8">
+                    {[
+                      { n: '1', t: 'Snap photos', d: 'Upload damage shots from your phone.' },
+                      { n: '2', t: 'Get your quote', d: 'Our estimators review within 4 hours.' },
+                      { n: '3', t: 'Drop off & done', d: 'We repair it and handle insurance.' },
+                    ].map((step) => (
+                      <li key={step.n} className="flex gap-4">
+                        <span className="flex-shrink-0 w-8 h-8 bg-red-600 text-white font-black italic font-heading flex items-center justify-center rounded-sm text-sm">
+                          {step.n}
+                        </span>
+                        <div>
+                          <div className="text-white font-black uppercase text-xs tracking-widest">{step.t}</div>
+                          <div className="text-white/60 text-sm mt-1">{step.d}</div>
+                        </div>
+                      </li>
+                    ))}
+                  </ol>
+                  <Link
+                    to="/quote"
+                    className="block w-full text-center bg-white text-slate-950 py-4 font-black uppercase text-[11px] tracking-[0.2em] transform -skew-x-12 hover:bg-red-600 hover:text-white transition-all"
+                  >
+                    Start in 60 seconds
+                  </Link>
+                </div>
               </div>
             </div>
           </div>
