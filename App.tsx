@@ -3,6 +3,7 @@ import React from 'react';
 import { Routes, Route, useLocation } from 'react-router-dom';
 import Navbar from './components/Navbar';
 import Footer from './components/Footer';
+import MobileActionBar from './components/MobileActionBar';
 import Home from './pages/Home';
 import Quote from './pages/Quote';
 import Services from './pages/Services';
@@ -24,7 +25,7 @@ const App: React.FC = () => {
   return (
     <div className="flex flex-col min-h-screen selection:bg-red-600 selection:text-white">
       <Navbar />
-      <main className="flex-grow">
+      <main className="flex-grow mobile-main-pad">
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/services" element={<Services />} />
@@ -39,6 +40,7 @@ const App: React.FC = () => {
         </Routes>
       </main>
       <Footer />
+      <MobileActionBar />
     </div>
   );
 };

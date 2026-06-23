@@ -15,6 +15,17 @@ const Navbar: React.FC = () => {
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
+  useEffect(() => {
+    document.body.style.overflow = isOpen ? 'hidden' : '';
+    return () => {
+      document.body.style.overflow = '';
+    };
+  }, [isOpen]);
+
+  useEffect(() => {
+    setIsOpen(false);
+  }, [location.pathname]);
+
   const navLinks = [
     { name: 'Home', path: '/' },
     { name: 'Services', path: '/services' },
@@ -26,7 +37,7 @@ const Navbar: React.FC = () => {
 
   return (
     <header className="fixed w-full z-50">
-      {/* Upper Utility Bar */}
+      {/* Upper Utility Bar — desktop only */}
       <div className={`hidden lg:block bg-slate-950 text-white py-2 border-b border-white/5 transition-all duration-300 ${scrolled ? 'h-0 opacity-0 -translate-y-full overflow-hidden' : 'opacity-100'}`}>
         <div className="max-w-7xl mx-auto px-6 flex justify-between items-center text-[11px] font-bold uppercase tracking-widest">
           <div className="flex items-center space-x-6">
@@ -47,15 +58,19 @@ const Navbar: React.FC = () => {
       </div>
 
       {/* Main Branding Bar */}
-      <nav className={`transition-all duration-500 ${scrolled ? 'bg-white/95 backdrop-blur-md shadow-2xl py-3 border-b border-slate-200' : 'bg-white py-5'}`}>
-        <div className="max-w-7xl mx-auto px-6 flex justify-between items-center">
-          <Link to="/" className="flex items-center group">
-            <div className="bg-red-600 p-2.5 rounded transform -skew-x-12 shadow-lg group-hover:rotate-3 transition-transform">
-              <Car className="w-6 h-6 text-white" />
+      <nav className={`transition-all duration-500 ${scrolled ? 'bg-white/95 backdrop-blur-md shadow-2xl py-2.5 md:py-3 border-b border-slate-200' : 'bg-white py-3 md:py-5'}`}>
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 flex justify-between items-center gap-3">
+          <Link to="/" className="flex items-center group min-w-0 flex-1">
+            <div className="bg-red-600 p-2 md:p-2.5 rounded transform -skew-x-12 shadow-lg group-hover:rotate-3 transition-transform flex-shrink-0">
+              <Car className="w-5 h-5 md:w-6 md:h-6 text-white" />
             </div>
-            <div className="ml-4 flex flex-col">
-              <span className="text-2xl font-black uppercase tracking-tighter leading-none text-slate-900 italic">{brand.nameDisplay.primary}<span className="text-red-600">{brand.nameDisplay.accent}</span></span>
-              <span className="text-[9px] uppercase tracking-[0.4em] font-black text-slate-400 -mt-0.5">{brand.tagline}</span>
+            <div className="ml-3 md:ml-4 flex flex-col min-w-0">
+              <span className="text-lg sm:text-xl md:text-2xl font-black uppercase tracking-tighter leading-none text-slate-900 italic truncate">
+                {brand.nameDisplay.primary}<span className="text-red-600">{brand.nameDisplay.accent}</span>
+              </span>
+              <span className="text-[8px] sm:text-[9px] uppercase tracking-[0.25em] sm:tracking-[0.4em] font-black text-slate-400 -mt-0.5 truncate hidden sm:block">
+                {brand.tagline}
+              </span>
             </div>
           </Link>
 
@@ -85,34 +100,72 @@ const Navbar: React.FC = () => {
             </div>
           </div>
 
-          <button onClick={() => setIsOpen(!isOpen)} className="lg:hidden text-slate-900 focus:outline-none">
-            {isOpen ? <X className="w-8 h-8" /> : <Menu className="w-8 h-8" />}
+          <button
+            type="button"
+            onClick={() => setIsOpen(!isOpen)}
+            aria-expanded={isOpen}
+            aria-label={isOpen ? 'Close menu' : 'Open menu'}
+            className="lg:hidden touch-target inline-flex items-center justify-center text-slate-900 focus:outline-none focus-visible:ring-2 focus-visible:ring-red-600 rounded-sm flex-shrink-0"
+          >
+            {isOpen ? <X className="w-7 h-7" /> : <Menu className="w-7 h-7" />}
           </button>
         </div>
       </nav>
 
       {/* Mobile Menu Overlay */}
-      <div className={`lg:hidden fixed inset-0 bg-slate-950 text-white z-50 transition-all duration-500 transform ${isOpen ? 'translate-x-0' : 'translate-x-full'}`}>
-        <div className="p-6 h-full flex flex-col">
-          <div className="flex justify-between items-center mb-12">
-            <span className="text-2xl font-black uppercase italic">{brand.nameDisplay.primary}<span className="text-red-600">{brand.nameMobile}</span></span>
-            <button onClick={() => setIsOpen(false)} className="p-2 border border-white/10 rounded-full"><X className="w-6 h-6" /></button>
+      <div
+        className={`lg:hidden fixed inset-0 z-[60] bg-slate-950 text-white transition-transform duration-500 ease-out ${
+          isOpen ? 'translate-x-0 visible pointer-events-auto' : 'translate-x-full invisible pointer-events-none'
+        }`}
+        aria-hidden={!isOpen}
+      >
+        <div className="flex flex-col h-full pt-[env(safe-area-inset-top)] pb-[env(safe-area-inset-bottom)]">
+          <div className="flex justify-between items-center px-4 py-4 border-b border-white/10">
+            <span className="text-xl font-black uppercase italic">
+              {brand.nameDisplay.primary}<span className="text-red-600">{brand.nameMobile}</span>
+            </span>
+            <button
+              type="button"
+              onClick={() => setIsOpen(false)}
+              aria-label="Close menu"
+              className="touch-target inline-flex items-center justify-center p-2 border border-white/10 rounded-full"
+            >
+              <X className="w-6 h-6" />
+            </button>
           </div>
-          <div className="flex flex-col space-y-8">
-            {navLinks.map((link) => (
-              <Link
-                key={link.name}
-                to={link.path}
-                onClick={() => setIsOpen(false)}
-                className="text-3xl font-black uppercase italic tracking-tighter hover:text-red-600 transition-colors"
-              >
-                {link.name}
-              </Link>
-            ))}
-          </div>
-          <div className="mt-auto space-y-6">
-            <a href={phoneHref} className="block text-center bg-white text-slate-900 py-4 font-black uppercase tracking-widest text-sm">Call Now: {brand.phone.display}</a>
-            <Link to="/quote" onClick={() => setIsOpen(false)} className="block text-center bg-red-600 text-white py-4 font-black uppercase tracking-widest text-sm">Start Digital Estimate</Link>
+
+          <nav className="flex-1 overflow-y-auto px-4 py-6">
+            <div className="flex flex-col gap-1">
+              {navLinks.map((link) => (
+                <Link
+                  key={link.name}
+                  to={link.path}
+                  onClick={() => setIsOpen(false)}
+                  className={`touch-target flex items-center px-3 py-3 text-2xl font-black uppercase italic tracking-tighter rounded-sm transition-colors ${
+                    location.pathname === link.path ? 'text-red-500 bg-white/5' : 'text-white hover:text-red-500'
+                  }`}
+                >
+                  {link.name}
+                </Link>
+              ))}
+            </div>
+          </nav>
+
+          <div className="px-4 pb-4 space-y-3 border-t border-white/10 pt-4">
+            <a
+              href={phoneHref}
+              className="touch-target flex items-center justify-center gap-2 w-full bg-white text-slate-900 py-4 font-black uppercase tracking-widest text-sm rounded-sm"
+            >
+              <Phone className="w-4 h-4" />
+              Call {brand.phone.display}
+            </a>
+            <Link
+              to="/quote"
+              onClick={() => setIsOpen(false)}
+              className="touch-target flex items-center justify-center w-full bg-red-600 text-white py-4 font-black uppercase tracking-widest text-sm rounded-sm"
+            >
+              Start Digital Estimate
+            </Link>
           </div>
         </div>
       </div>

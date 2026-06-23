@@ -63,7 +63,7 @@ const Services: React.FC = () => {
   return (
     <div className="flex flex-col">
       {/* Hero Section */}
-      <section className="relative pt-48 pb-24 bg-slate-950 overflow-hidden">
+      <section className="relative pt-28 md:pt-48 pb-24 bg-slate-950 overflow-hidden">
         <div className="absolute inset-0 z-0 opacity-20">
           <img 
             src="https://images.unsplash.com/photo-1503376780353-7e6692767b70?auto=format&fit=crop&q=80&w=1920" 

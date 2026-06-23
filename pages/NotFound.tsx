@@ -7,7 +7,7 @@ import { brand } from '../lib/brand';
 const NotFound: React.FC = () => {
   return (
     <div className="flex flex-col min-h-[60vh]">
-      <section className="flex-grow flex items-center pt-40 pb-24 bg-slate-950">
+      <section className="flex-grow flex items-center pt-28 md:pt-40 pb-16 md:pb-24 bg-slate-950">
         <div className="max-w-3xl mx-auto px-6 text-center">
           <span className="text-red-500 font-black uppercase tracking-[0.4em] text-xs italic">404 — Route Not Found</span>
           <h1 className="text-6xl md:text-8xl font-black text-white uppercase italic font-heading leading-none mt-8 mb-6">

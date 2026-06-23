@@ -24,7 +24,7 @@ const Contact: React.FC = () => {
   return (
     <div className="flex flex-col">
       {/* Hero Section */}
-      <section className="relative pt-48 pb-24 bg-slate-950 overflow-hidden">
+      <section className="relative pt-28 md:pt-48 pb-24 bg-slate-950 overflow-hidden">
         <div className="absolute inset-0 opacity-20 pointer-events-none">
           <img 
             src="https://images.unsplash.com/photo-1517524206127-48bbd363f3d7?auto=format&fit=crop&q=80&w=1920" 
@@ -32,7 +32,7 @@ const Contact: React.FC = () => {
             className="w-full h-full object-cover"
           />
         </div>
-        <div className="relative z-10 max-w-7xl mx-auto px-6">
+        <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6">
           <div className="flex items-center space-x-4 mb-8">
             <div className="w-12 h-1.5 bg-red-600"></div>
             <span className="text-red-500 font-black uppercase tracking-[0.4em] text-xs italic">Operational Support</span>
@@ -49,8 +49,8 @@ const Contact: React.FC = () => {
 
       {/* Dispatch Cards */}
       <section className="py-12 bg-white border-b border-slate-200">
-        <div className="max-w-7xl mx-auto px-6">
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 -mt-24 relative z-20">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-4 md:gap-8 -mt-12 md:-mt-24 relative z-20">
             {[
               {
                 title: "Emergency Dispatch",
@@ -82,14 +82,14 @@ const Contact: React.FC = () => {
                 href={card.link}
                 target={card.link.startsWith('http') ? '_blank' : undefined}
                 rel="noreferrer"
-                className={`${card.color} text-white p-10 rounded-sm shadow-2xl transform hover:-translate-y-2 transition-all duration-500 group relative overflow-hidden`}
+                className={`${card.color} text-white p-6 sm:p-8 md:p-10 rounded-sm shadow-2xl md:transform md:hover:-translate-y-2 transition-all duration-500 group relative overflow-hidden touch-target block`}
               >
                 <div className="absolute top-0 right-0 p-8 opacity-10 group-hover:scale-125 transition-transform">
                   <card.icon size={80} />
                 </div>
                 <card.icon className="w-8 h-8 mb-6" />
                 <h3 className="text-[10px] font-black uppercase tracking-[0.3em] text-white/60 mb-2">{card.title}</h3>
-                <p className="text-2xl font-black uppercase italic font-heading mb-1">{card.val}</p>
+                <p className="text-lg sm:text-xl md:text-2xl font-black uppercase italic font-heading mb-1 break-words">{card.val}</p>
                 <p className="text-xs font-medium text-white/70">{card.sub}</p>
                 <div className="mt-8 flex items-center text-[9px] font-black uppercase tracking-widest opacity-0 group-hover:opacity-100 transition-opacity">
                   Establish Connection <ChevronRight className="ml-2 w-3 h-3" />
@@ -102,7 +102,7 @@ const Contact: React.FC = () => {
 
       {/* Main Contact Section */}
       <section className="py-24 bg-slate-50">
-        <div className="max-w-7xl mx-auto px-6">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6">
           <div className="grid lg:grid-cols-2 gap-20">
             {/* Form Column */}
             <div className="bg-white p-10 md:p-16 rounded-sm shadow-2xl border border-slate-200">

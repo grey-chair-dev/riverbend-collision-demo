@@ -53,7 +53,7 @@ const Legal: React.FC = () => {
 
   return (
     <div className="flex flex-col">
-      <section className="pt-48 pb-16 bg-slate-950">
+      <section className="pt-28 md:pt-48 pb-12 md:pb-16 bg-slate-950">
         <div className="max-w-3xl mx-auto px-6">
           <span className="text-red-500 font-black uppercase tracking-[0.4em] text-xs italic">Legal</span>
           <h1 className="text-4xl md:text-6xl font-black text-white uppercase italic font-heading leading-tight mt-6 mb-6">

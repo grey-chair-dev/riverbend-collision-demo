@@ -69,12 +69,12 @@ const Quote: React.FC = () => {
 
   if (submitted) {
     return (
-      <div className="min-h-screen pt-40 pb-20 px-6 bg-slate-50 flex items-center justify-center">
-        <div className="max-w-xl w-full bg-white p-16 rounded-sm shadow-2xl text-center border-t-8 border-red-600">
+      <div className="min-h-screen pt-28 md:pt-40 pb-28 md:pb-24 px-4 sm:px-6 bg-slate-50 flex items-center justify-center">
+        <div className="max-w-xl w-full bg-white p-8 sm:p-12 md:p-16 rounded-sm shadow-2xl text-center border-t-8 border-red-600">
           <div className="w-24 h-24 bg-red-600 rounded-full flex items-center justify-center mx-auto mb-10 shadow-xl metallic-shine">
             <CheckCircle className="w-12 h-12 text-white" />
           </div>
-          <h2 className="text-4xl font-black text-slate-950 uppercase italic font-heading mb-4 leading-tight">Request Logged</h2>
+          <h2 className="text-3xl sm:text-4xl font-black text-slate-950 uppercase italic font-heading mb-4 leading-tight">Request Logged</h2>
           <p className="text-slate-500 mb-12 leading-relaxed font-medium">
             Thank you, {formData.name}. Our head estimator will review your photos and contact you via {formData.preferredContact} within 4 business hours.
           </p>
@@ -90,20 +90,21 @@ const Quote: React.FC = () => {
   }
 
   return (
-    <div className="min-h-screen pt-40 pb-24 px-6 bg-slate-50">
+    <div className="min-h-screen pt-28 md:pt-40 pb-28 md:pb-24 px-4 sm:px-6 bg-slate-50">
       <div className="max-w-5xl mx-auto">
-        <div className="flex flex-col md:flex-row md:items-end justify-between mb-12 gap-6">
-          <div className="flex items-center space-x-6">
-            <div className="w-16 h-2 bg-red-600"></div>
-            <div>
-              <h1 className="text-5xl font-black text-slate-950 uppercase font-heading italic leading-none">FREE DIGITAL QUOTE</h1>
-              <p className="text-slate-400 font-bold uppercase text-[11px] tracking-[0.3em] mt-3">Professional accuracy. Zero shop visit required.</p>
+        <div className="flex items-end justify-between mb-8 md:mb-12 gap-4">
+          <div className="flex items-center space-x-4 md:space-x-6 min-w-0">
+            <div className="w-10 md:w-16 h-2 bg-red-600 flex-shrink-0"></div>
+            <div className="min-w-0">
+              <h1 className="text-3xl sm:text-4xl md:text-5xl font-black text-slate-950 uppercase font-heading italic leading-none">FREE DIGITAL QUOTE</h1>
+              <p className="text-slate-400 font-bold uppercase text-[10px] sm:text-[11px] tracking-[0.2em] sm:tracking-[0.3em] mt-2 sm:mt-3">Professional accuracy. Zero shop visit required.</p>
             </div>
           </div>
+          <div className="text-slate-300 font-black text-4xl md:text-6xl italic font-heading leading-none flex-shrink-0 lg:hidden">0{step}</div>
           <div className="text-slate-300 font-black text-6xl italic font-heading leading-none hidden lg:block">0{step}</div>
         </div>
 
-        <div className="grid lg:grid-cols-3 gap-12">
+        <div className="grid lg:grid-cols-3 gap-8 lg:gap-12">
           <div className="lg:col-span-2">
             <div className="bg-white rounded-sm shadow-2xl overflow-hidden border border-slate-200">
               {/* Progress Indicator */}
@@ -114,11 +115,11 @@ const Quote: React.FC = () => {
                 ></div>
               </div>
 
-              <form ref={formRef} onSubmit={handleSubmit} className="p-10 md:p-16">
+              <form ref={formRef} onSubmit={handleSubmit} className="p-6 sm:p-10 md:p-16">
                 {step === 1 && (
                   <div className="animate-in fade-in slide-in-from-right duration-500">
                     <h3 className="text-2xl font-black text-slate-950 uppercase italic font-heading mb-10 border-b border-slate-100 pb-4">Personal Logistics</h3>
-                    <div className="grid md:grid-cols-2 gap-10">
+                    <div className="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-10">
                       <div className="space-y-2">
                         <label className="text-[10px] font-black uppercase text-slate-400 tracking-widest">Full Name</label>
                         <input required name="name" value={formData.name} onChange={handleInputChange} type="text" className="w-full bg-slate-50 border-b-2 border-slate-200 px-0 py-3 text-slate-950 font-bold focus:outline-none focus:border-red-600 transition-colors" placeholder="Full Legal Name" />
@@ -141,7 +142,7 @@ const Quote: React.FC = () => {
                       </div>
                     </div>
                     <div className="mt-16 flex justify-end">
-                      <button type="button" onClick={() => advanceToStep(2)} className="bg-slate-950 hover:bg-red-600 text-white px-12 py-5 font-black uppercase tracking-widest text-[11px] transition-all flex items-center transform -skew-x-12">
+                      <button type="button" onClick={() => advanceToStep(2)} className="touch-target w-full sm:w-auto bg-slate-950 hover:bg-red-600 text-white px-8 sm:px-12 py-4 sm:py-5 font-black uppercase tracking-widest text-[11px] transition-all flex items-center justify-center sm:justify-end sm:ml-auto transform sm:-skew-x-12">
                         Continue to Damage Info <ChevronRight className="w-4 h-4 ml-2" />
                       </button>
                     </div>

@@ -6,9 +6,9 @@ import { brand, copyrightLine, phoneHref } from '../lib/brand';
 
 const Footer: React.FC = () => {
   return (
-    <footer className="bg-slate-950 text-white pt-24 pb-12">
+    <footer className="bg-slate-950 text-white pt-16 md:pt-24 pb-8 md:pb-12">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-16 mb-20">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-10 md:gap-16 mb-12 md:mb-20">
           <div>
             <div className="flex items-center space-x-2 mb-8">
               <div className="bg-red-600 p-1.5 rounded transform rotate-3">

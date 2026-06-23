@@ -99,7 +99,7 @@ const Reviews: React.FC = () => {
   return (
     <div className="flex flex-col">
       {/* Hero Section */}
-      <section className="relative pt-48 pb-24 bg-slate-950 overflow-hidden text-center">
+      <section className="relative pt-28 md:pt-48 pb-24 bg-slate-950 overflow-hidden text-center">
         <div className="absolute inset-0 opacity-10 grayscale pointer-events-none">
           <img src="https://images.unsplash.com/photo-1541899481282-d53bffe3c35d?auto=format&fit=crop&q=80&w=1920" alt="background" className="w-full h-full object-cover" />
         </div>
@@ -110,19 +110,19 @@ const Reviews: React.FC = () => {
             <span className="text-red-500 text-[10px] font-black uppercase tracking-[0.3em]">Verified Customer Proof</span>
           </div>
           
-          <h1 className="text-5xl md:text-8xl font-black text-white uppercase italic font-heading leading-[0.8] mb-12">
+          <h1 className="text-4xl sm:text-5xl md:text-8xl font-black text-white uppercase italic font-heading leading-[0.85] sm:leading-[0.8] mb-8 md:mb-12 px-2">
             THE <span className="text-transparent text-stroke-red">VERDICT</span>
           </h1>
 
           <div className="flex flex-col md:flex-row items-center justify-center gap-12 mb-16">
             <div className="flex flex-col items-center">
-              <span className="text-7xl font-black text-white italic font-heading mb-2">4.9</span>
+              <span className="text-5xl md:text-7xl font-black text-white italic font-heading mb-2">4.9</span>
               <StarRating rating={5} size={28} />
               <span className="text-[10px] font-black uppercase tracking-widest text-slate-500 mt-4">2,400+ Google Reviews</span>
             </div>
             <div className="h-20 w-px bg-white/10 hidden md:block"></div>
             <div className="flex flex-col items-center">
-              <span className="text-7xl font-black text-white italic font-heading mb-2">100%</span>
+              <span className="text-5xl md:text-7xl font-black text-white italic font-heading mb-2">100%</span>
               <span className="text-red-600 font-black uppercase text-2xl italic font-heading">Match</span>
               <span className="text-[10px] font-black uppercase tracking-widest text-slate-500 mt-2">Factory Paint Guarantee</span>
             </div>
